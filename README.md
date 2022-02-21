@@ -36,6 +36,12 @@ Mockups for MakersBnB are available [here](https://github.com/makersacademy/cour
 
 ## MVP
 
+The minimum viable product of our BnB web-app is the ability to list a property with a name, description and price.
+
+A user is able to list a place.
+A user can name a listed place.
+A user can provide a description of a listed place.
+A user can provide a price per night of a listed place.
 
 ## User Stories
 
