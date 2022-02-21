@@ -4,7 +4,7 @@ require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
 require_relative '../app.rb'
-require_relative './setup_test_database'
+#require_relative './setup_test_database'
 
 ENV['ENVIRONMENT'] = 'test'
 
