@@ -11,9 +11,11 @@ end
 group :development, :test do
   gem 'rubocop', '1.20'
   gem 'sinatra'
+  gem 'sinatra-flash'
   gem 'capybara'
   gem 'sinatra-contrib'
   gem 'pg'
   gem 'webrick'
+  gem 'bcrypt'
 end
 
