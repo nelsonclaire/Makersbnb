@@ -43,168 +43,262 @@ The minimum viable product of our BnB web-app is the ability to list a property 
 - A user can provide a description of a listed place.
 - A user can provide a price per night of a listed place.
 
+## Technologies used
+
+- Ruby
+- Rspec (test framework)
+- Sinatra (Ruby web framework)
+- Capybara (web feature test library)
+- PostgreSQL (database manager)
+
+
 ## User Stories
 
-```
+
 User story 1
 
+```
   As a user
   so that I can advertise my space to rent
   I want to be able to list a space
+```
 
-  Object | Messages
+#### Object Model
+
+Object | Messages
 --------------- | ---------------
 Person |
 Space | list(create)
 
+
+#### Feature breakdown
+
+1. Can enter space details
+
+2. CREATE space listing
+
+------
 
 User story 2
 
+```
   As a user with multiple spaces
   so that I can list more than one space
   I want to be able to list multiple spaces
-    Object | Messages
+```
+
+#### Object Model
+
+Object | Messages
 --------------- | ---------------
 Person |
 Space | list(create)
 
+------
+
 User story 3
 
+```
   As a user
   so that I can distinguish between other spaces
   I want to be able to add a name to my space
+```
 
-  Object | Messages
+Object | Messages
 --------------- | ---------------
 Person |
 Space | addName
 
+------
 
 User story 4
 
+```
   As a user
   so that I can distinguish between other spaces
   I want to be able to add a description to my space
-  Object | Messages
+```
+
+#### Object Model
+
+Object | Messages
 --------------- | ---------------
 Person |
 Space | addDescription
 
+------
 
 User story 5
 
+```
   As a user
   so that I can distinguish between other spaces
   I want to be able to add a price per night to my space
-    Object | Messages
+```
+
+#### Object Model
+
+Object | Messages
 --------------- | ---------------
 Person |
 Space | addPrice
 
+------
 
 User story 6
 
+```
   As a user
   so that I can only offer my space when it is available
   I want to be able to add a range of dates 
+```
 
-    Object | Messages
+#### Object Model
+
+Object | Messages
 --------------- | ---------------
 Person |
 Space | addDates
 
+------
+
 User story 7
 
+```
   As a user 
   so that I can hire a space
   I want to be able to request to stay for one night
+```
 
-    Object | Messages
+#### Object Model
+
+Object | Messages
 --------------- | ---------------
 Person |
 User | RequestStay
 
+------
+
 User story 8
 
+```
   As a host 
   so that I can manage my space
   I want to be able to approve a booking
+```
 
-    Object | Messages
+#### Object Model
+
+Object | Messages
 --------------- | ---------------
 Person |
 User | ApproveBooking
 
+------
+
 User story 9
 
+```
   As a user
   so that I can only see spaces that I can book
   I want to be shown available spaces
+```
+
+#### Object Model
 
 Object | Messages
 --------------- | ---------------
 Person |
 User | ShowAvailability
 
+------
 
 User story 10
 
+```
   As a host
   so that I don't double book my space
   I want to only show available dates
+```
+
+#### Object Model
 
 Object | Messages
 --------------- | ---------------
 Person |
 User | UpdateAvailability
 
+------
 
 User story 11
 
+```
   As a host
   so that I can receive multiple booking requests
   my space should show as available until I approve a booking
+```
 
-  Object | Messages
+#### Object Model
+
+Object | Messages
 --------------- | ---------------
 Person |
 User | ShowAvailability
 User | UpdateAvailability
 
+------
+
 User story 12
 
+```
   As a user
   so that I can save my details
   I want to be able to sign up
+```
 
-    Object | Messages
+#### Object Model
+
+Object | Messages
 --------------- | ---------------
 Person |
 User | SignUp
 
+------
 
 User story 13
 
+```
   As a user
   so that I can access my account
   I want to be able to log in
+```
+
+#### Object Model
+
 
       Object | Messages
 --------------- | ---------------
 Person |
 User | LogIn
 
+------
+
 User story 14
 
+```
   As a user
   so that only I have access to my account
   I want to be able to log out
+```
 
-      Object | Messages
+#### Object Model
+
+Object | Messages
 --------------- | ---------------
 Person |
 User | LogOut
-  ```
 
-[User Stories](https://github.com/nelsonclaire/chitter-challenge/blob/master/public/user_stories.png)
+------
+
+A link to the user stories picture is [here](https://github.com/nelsonclaire/chitter-challenge/blob/master/public/user_stories.png)
 

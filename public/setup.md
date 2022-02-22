@@ -27,6 +27,8 @@ gem 'rspec'
 gem 'pg'
 gem 'capybara'
 gem 'webrick'
+gem 'sinatra-flash'
+gem 'bcrypt'
 ```
 
 We've listed dependencies as strings, but the actual programs aren't installed to the project yet. Bundler can look through a Gemfile, and install each gem listed there by executing the `gem` function with the provided string as an argument. Use Bundler's `install` command:

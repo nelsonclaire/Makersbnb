@@ -5,6 +5,7 @@ require 'pg'
 require 'date'
 require_relative './lib/space'
 require_relative './lib/user'
+require_relative './database_connection_setup'
 
 class Makersbnb < Sinatra::Base
   configure :development do 
@@ -48,6 +49,8 @@ register Sinatra::Flash
       flash[:notice] = 'Email or Username already in use or field(s) is blank!'
       redirect "/users/new"
     end
+
+  end
 
   get '/dates' do
     p params

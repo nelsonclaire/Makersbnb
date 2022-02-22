@@ -8,7 +8,7 @@ describe Space do
         description: "Amazing place, sea views", 
         price: 100
       )
-      p space
+      
       expect(space).to be_a Space
       expect(space.description).to eq("Amazing place, sea views")
       expect(space.name).to eq("Jack's House")
