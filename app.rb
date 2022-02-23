@@ -29,8 +29,24 @@ register Sinatra::Flash
   get '/homepage' do 
     erb :homepage
   end
+
+  get '/login' do
+    erb :login
+  end
+
+  post '/login-details' do
+    user = User.authenticate(email: params['email'], password: params['password'])
+    if user
+      session[:user_id] = user.id
+      redirect '/dates'
+    else
+      flash[:notice] = 'User email or password is incorrect'
+      redirect '/login'
+    end
+  end
   
   post '/spaces/new' do  
+
     space = Space.list(name: params['name'], description: params['description'], 
     price: params['price'], start_date: params['start_date'], end_date: params['end_date'], 
     user_id: session['user_id'])
