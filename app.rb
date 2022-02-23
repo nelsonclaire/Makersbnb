@@ -29,15 +29,19 @@ register Sinatra::Flash
   get '/homepage' do 
     erb :homepage
   end
+
+  get '/login' do
+    erb :login
+  end
   
   post '/spaces/new' do  
     space = Space.list(name: params['name'], description: params['description'], price: params['price'])
     if space
-    redirect "/dates"
+      redirect "/dates"
     else
       flash[:notice] = 'All fields must be completed!'
       redirect "/spaces/new"
-  end
+    end
   end 
 
 
