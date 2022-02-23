@@ -35,9 +35,10 @@ register Sinatra::Flash
   end
 
   post '/login-details' do
-    user = User.authenticate(email: params['email'], password: params['password'])
-    if user
-      session[:user_id] = user.id
+    @user = User.authenticate(email: params['email'], password: params['password'])
+    if @user
+      session[:user_id] = @user.id
+      session[:user_name] = @user.name
       redirect '/dates'
     else
       flash[:notice] = 'User email or password is incorrect'
@@ -83,6 +84,7 @@ register Sinatra::Flash
 
   get '/dates' do
     p params
+    @user_name = session[:user_name]
     @start_date = session[:trip_start]
     @end_date = session[:trip_end]
     erb :dates
