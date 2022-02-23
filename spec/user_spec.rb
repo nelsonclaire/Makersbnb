@@ -35,4 +35,20 @@ describe User do
 
   end
 
+  describe ".find" do
+    it 'returns the requested user object' do
+      user = User.create(
+          name: "Jack",
+          email: "jack@gmail.com",
+          password: "Jack",
+          username: "jack"       
+      )   
+      result = User.find(id: user.id) 
+      expect(result).to be_a User
+      expect(result.id).to eq(user.id)
+      expect(result.name).to eq(user.name)
+      expect(result.email).to eq("jack@gmail.com")
+    end  
+  end 
+
 end
