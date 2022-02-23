@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>MakersBnB</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  </head>
+  <body>
+
+  <a class="hyperlinks" href="/dates" %>Login</a>
+
+    <div class="page-header">
+      <h1>Feel at home, anywhere</h1>
+    </div>
+
+    <div class="flash-notice">
+      <%= flash[:notice] %>
+    </div>
+
+    <div class="newUser">Sign up to MakersBnB</div>
+    <div class="container">
+      <div class="signup-form">
+        <form action="/users/new" method="post">
+        <div>
+          <label>Name</label>
+        </div>
+          <div class="form-details">
+            <input type="text" name="signup_name">
+          </div>
+          <div>
+          <label>Username</label>
+        </div>
+          <div class="form-details">
+            <input type="text" name="signup_username">
+          </div>
+          <div>
+          <label>Email Address</label>
+        </div>
+          <div class="form-details">
+            <input type="text" name="signup_email">
+          </div>
+          <div>
+          <label>Password</label>
+        </div>
+          <div class="form-details">
+            <input type="password" name="signup_password">
+          </div>
+          <div>
+          <label>Password Confirmation</label>
+        </div>
+          <div class="form-details">
+            <input type="password" name="confirm_signup_password">
+          </div>
+
+          <div class="form-details">
+            <button>Sign up</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+  </body>
+</html>

@@ -1,29 +1,50 @@
 <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>MakersBnB</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  </head>
+  <body>
 
-<label for="start">Start date:</label>
+    <div class="page-header">
+      <h1>MakersBnB</h1>
+    </div>
+
+    <div class="flash-notice">
+      <%= flash[:notice] %>
+    </div>
+
+    <div class="sub-header">
+    <h2>Book a space</h2>
+  </div>
+
+  <div class="newUser">
+  <form method="get" action="/spaces/new">
+  <button>List a space</button>
+  </form>
+  </div>
+        
+
+  <form method="get" action="/selected-dates">
+
+<label for="start">Available from (DD/MM/YY)</label>
   <form method="post" action="/selected-dates">
     <input type="date" id="start" name="trip_start"
        value="2022-02-22"
        min="2018-01-01" max="2022-12-28">
     <br>
-<label for="end">End date:</label>
+<label for="end">Available to (DD/MM/YY)</label>
     <br>
     <input type="date" id="end" name="trip_end"
        value="<%=Date.today.to_s%>"
        min="2018-01-01" max="2022-12-31">
     <br>
-    <input type="submit" name="submit_dates">
+    <button>List spaces</button>
   </form>
   <br>
   Selected dates: <%= @start_date %> - <%= @end_date %>
 
-
-       <!-- 
-      }
-
-      input,
-      label {
-          margin: .4rem 0;
-      }
-       -->
-      
+  </body>
+</html>

@@ -18,38 +18,48 @@ class Makersbnb < Sinatra::Base
 
 register Sinatra::Flash
 
-
-
   get '/' do
     'Welcome to Makersbnb'
   end
 
-  get '/index' do 
-    erb :index
+  get '/spaces/new' do 
+    erb :new
+  end
+
+  get '/homepage' do 
+    erb :homepage
   end
   
-  post '/spaces' do
+  post '/spaces/new' do  
     space = Space.list(name: params['name'], description: params['description'], price: params['price'])
-    'Successfully submitted ' + space.name 
+    if space
+    redirect "/dates"
+    else
+      flash[:notice] = 'All fields must be completed!'
+      redirect "/spaces/new"
+  end
   end 
 
 
-  get '/users/new' do
-    erb :"users/new"
-  end
+  # get '/users/new' do
+  #   erb :"users/new"
+  # end
 
   post '/users/new' do
-    user = User.create(name: params['name'], username: params['username'], 
-    email: params['email'], 
-    password: params['password'])
+    if params['signup_password'] != params['confirm_signup_password']
+      flash[:notice] = 'The password fields must match!'
+      redirect "/homepage"
+    else
+      user = User.create(name: params[:signup_name], username: params[:signup_username],
+      email: params[:signup_email], password: params[:signup_password])
+    end
     if user
       session[:user_id] = user.id
-      redirect "/index"
+      redirect "/spaces/new"
     else
       flash[:notice] = 'Email or Username already in use or field(s) is blank!'
-      redirect "/users/new"
+      redirect "/homepage"
     end
-
   end
 
   get '/dates' do
