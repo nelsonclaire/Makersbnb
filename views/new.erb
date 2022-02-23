@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>MakersBnB</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/stylesheet.css">
+  </head>
+
+  <body>
+    <div class="page-header">
+      <h1>MakersBnB</h1>
+    </div>
+
+    <div class="flash-notice">
+    <%= flash[:notice] %>
+  </div>
+  
+    <div class="sub-header">
+      <h2>List a space</h2>
+    </div>
+    <div class="container">
+      <form class="new-space-form" action="/spaces/new" method="post">
+        <div>
+          <label>Name</label>
+        </div>
+        <div>
+          <input class="form-details" type="text" name="name">
+        </div>
+        <div>
+          <label>Description</label>
+        </div>
+        <div>
+          <textarea class="form-details" name="description" rows="5" cols="45"></textarea>
+        </div>
+        <div>
+          <label>Price per night</label>
+        </div>
+        <div>
+          <input class="form-details" type="price" name="price" placeholder="£">
+        </div>
+        <div>
+          <label>Available from (DD/MM/YY)</label>
+        </div>
+        <div>
+          <input class="date-picker" type="date"name="start_date">
+        </div>
+        <div>
+          <label>Available until (DD/MM/YY)</label>
+        </div>
+        <div>
+          <input class="date-picker" type="date" name="end_date">
+        </div>
+        <div>
+          <button>List my space</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
+
+
+
