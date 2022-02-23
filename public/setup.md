@@ -122,6 +122,7 @@ To set up the appropriate tables, connect to each database in `psql` and run the
 - Run the following files in db/migrations in the following order
   * 01_create_spaces_table.sql
   * 02_create_users_table.sql
+  * 03_add_user_id_start_date_end_date_to_spaces_table.sql
 
 - Run the following to check the tables have been created correctly
 
@@ -135,8 +136,13 @@ Table "public.spaces"
  name        | character varying(60)  |           |          | 
  description | character varying(600) |           |          | 
  price       | numeric                |           |          | 
+ start_date  | date                   |           |          | 
+ end_date    | date                   |           |          | 
+ user_id     | integer                |           |          | 
 Indexes:
     "spaces_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "spaces_user_id_fkey" FOREIGN KEY (user_id) REFERENCES users(id)
 
 
 \d users
