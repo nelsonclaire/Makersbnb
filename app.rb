@@ -31,13 +31,16 @@ register Sinatra::Flash
   end
   
   post '/spaces/new' do  
-    space = Space.list(name: params['name'], description: params['description'], price: params['price'])
+    space = Space.list(name: params['name'], description: params['description'], 
+    price: params['price'], start_date: params['start_date'], end_date: params['end_date'], 
+    user_id: session['user_id'])
+
     if space
-    redirect "/dates"
+      redirect "/dates"
     else
       flash[:notice] = 'All fields must be completed!'
       redirect "/spaces/new"
-  end
+    end
   end 
 
 

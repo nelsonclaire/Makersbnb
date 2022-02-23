@@ -6,7 +6,10 @@ describe Space do
       space = Space.list(
         name: "Jack's House", 
         description: "Amazing place, sea views", 
-        price: 100
+        price: 100,
+        start_date: '2022-01-01',
+        end_date: '2022-12-31',
+        user_id: 12
       )
       
       expect(space).to be_a Space
