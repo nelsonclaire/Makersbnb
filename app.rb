@@ -100,5 +100,11 @@ register Sinatra::Flash
     # Space.dates(place: params[:id], start: params[:trip-start], end: params[:trip-end]) 
   end
 
+  get '/sessions/destroy' do
+    session.clear
+    flash[:notice] = 'You have signed out.'
+    redirect '/login'
+  end
+
   run! if app_file == $0
 end
