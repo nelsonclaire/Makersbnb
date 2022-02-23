@@ -51,7 +51,6 @@ class User
   end
 
   def self.authenticate(email:, password:)
-    
     result = DatabaseConnection.query(
       "SELECT * FROM users WHERE email = $1", [email]
     )
