@@ -67,7 +67,7 @@
 
   </div>
   </div>
-  
+
     <div class="card">
       <div class="card-body">
         <div class="rooms">
@@ -116,7 +116,7 @@
             <div>
               <%= Date.parse(space.end_date).strftime("%-d %B %Y") %>
             </div>
-            <form action="/space/<%= space.id %>/request" method="get">
+            <form action="/space/<%= space.id %>/<%= space.name %>/request" method="get">
               <button>Request</button>
             </form>
           <% end %>

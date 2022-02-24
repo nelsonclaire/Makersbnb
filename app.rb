@@ -5,6 +5,7 @@ require 'pg'
 require 'date'
 require_relative './lib/space'
 require_relative './lib/user'
+require_relative './lib/booking'
 require_relative './database_connection_setup'
 
 class Makersbnb < Sinatra::Base
@@ -102,9 +103,12 @@ class Makersbnb < Sinatra::Base
     # Space.dates(place: params[:id], start: params[:trip-start], end: params[:trip-end])
   end
 
-  get '/space/:id/request' do
+  get '/space/:id/:name/request' do
     p "into here"
-    "I would like to request this space" 
+    @space_name = params[:name]
+    @date_range = session[:trip_start]..session[:trip_end]
+      @bookings = Booking.checkdates(space_id: params[:id], date: @date_range)
+    erb :request
   end
 
   get '/sessions/destroy' do

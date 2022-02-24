@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>MakersBnB</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  </head>
+  <body>
+
+    <div class="page-header">
+      <h1>MakersBnB - Feel at home, anywhere</h1>
+    </div>
+
+    <div class="nav">
+
+    <a class="nav_links" href="/dates" %>Spaces</a> 
+    |
+  <a class="nav_links" href="/requests" %>Requests</a> 
+  |
+  <a class="nav_links" href="/sessions/destroy" %>Sign Out</a>
+
+  </div>
+
+    <%if @space_name%> 
+    <div class="welcome">
+      <%=@space_name%>
+    </div>   
+    <%end%>
+
+    <div class="flash-notice">
+      <%= flash[:notice] %>
+    </div>   
+
+
+    <div class="card">
+      <div class="card-body">
+        <div class="rooms">
+          <% @bookings.each do |booking| %>
+            <div>
+              <% booking.each do |date, status| %>
+            <% if status == "Unavailable" %>
+                <%= date %> is Unavailable 
+            </div>
+            <% elsif status == "Available" %>
+            <%= date %>
+            <form action="/dates" method="get">
+              <button>Request</button>
+            </form>
+            <% end %>
+            <% end %>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
