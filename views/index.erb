@@ -41,16 +41,18 @@
   <button>List a space</button>
   </form>
   </div>
-        
+      
+
   <div class="container">
   <div class="dates-form">
+
 
   <form method="get" action="/selected-dates">
 
 <label for="start">Available from (DD/MM/YY)</label>
   <form method="post" action="/selected-dates">
     <input type="date" id="start" name="trip_start"
-       value="2022-02-22"
+       value="<%=Date.today.to_s%>"
        min="2018-01-01" max="2031-12-28">
     <br>
 <label for="end">Available to (DD/MM/YY)</label>
@@ -65,7 +67,63 @@
 
   </div>
   </div>
-  Selected dates: <%= @start_date %> - <%= @end_date %>
+  
+    <div class="card">
+      <div class="card-body">
+        <div class="rooms">
+          <% @spaces.each do |space| %>
+            <div>
+              <label>Name</label>
+            </div>
+            <div>
+              <%= space.name %>
+            </div>
+            <div>
+              <label>Description</label>
+            </div>
+            <div>
+              <%= space.description %>
+            </div>
+            <div>
+              <label>Price per night</label>
+            </div>
+            <div>
+              <%= space.price %>
+            </div>
+          
+            <div>
+              <% @list_hosts.each do |host| %>
+                <% if host.id == space.user_id %>
+                  <div>
+                    <label>Host</label>
+                  </div>
+                  <div>
+                    <%= host.username %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+
+            <div>
+              <label>Available from</label>
+            </div>
+            <div>
+              <%= Date.parse(space.start_date).strftime("%-d %B %Y") %>
+            </div>
+            <div>
+              <label>Available until</label>
+            </div>
+            <div>
+              <%= Date.parse(space.end_date).strftime("%-d %B %Y") %>
+            </div>
+            <form action="/space/<%= space.id %>/request" method="get">
+              <button>Request</button>
+            </form>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
 
   </body>
 </html>

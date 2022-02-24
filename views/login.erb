@@ -8,28 +8,43 @@
   </head>
   <body>
 
+  <div class="page-header">
+  <h1>MakersBnB - Feel at home, anywhere</h1>
+</div>
+
+<div class="nav">
+
+  <a class="nav_links" href="/about" %>About</a> 
+  |
+  <a class="nav_links" href="/homepage" %>Sign Up</a>
+
+  </div>
+
     <div class="flash-notice">
       <%= flash[:notice] %>
     </div>
 
-    <div class="login">Login to MakersBnB</div>
+    <div class="welcomeMessage">Log in to MakersBnB</div>
+
     <div class="container">
       <div class="login-form">
         <form action="/login-details" method="post">
           <div>
-            <label>Enter Email</label>
+            <label>Email Address</label>
           </div>
           <div class="form-details">
             <input type="text" name="email">
           </div>
           <div>
-            <label>Enter Password</label>
+            <label>Password</label>
           </div>
           <div class="form-details">
             <input type="password" name="password">
           </div>
           <div class="form-details">
-            <button>Login</button>
+            <button>Log in</button>
           </div>
         </form>
+      </div>
+    </div>
   </body>

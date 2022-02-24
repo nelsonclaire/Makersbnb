@@ -3,16 +3,18 @@ require_relative './database_connection'
 require 'pg'
 
 class User
-  
   def self.create(name:, username:, email:, password:)
     return nil if email.empty? || password.empty? || name.empty? || username.empty?
+
     cleaned_username = DatabaseConnection.escape_string(username)
     return nil if account_exists?(cleaned_username, email)
+
     encrypted_password = BCrypt::Password.create(password)
 
     result = DatabaseConnection.query(
       "INSERT INTO users (name, username, email, password) VALUES($1, $2, $3, $4) ON CONFLICT DO NOTHING RETURNING id, name, username, email;", [
-        name, cleaned_username, email, encrypted_password]
+        name, cleaned_username, email, encrypted_password
+      ]
     )
     User.new(
       id: result[0]['id'],
@@ -23,7 +25,6 @@ class User
   end
 
   def self.all
-    
     result = DatabaseConnection.query("SELECT * FROM users")
 
     result.map do |user|
@@ -38,7 +39,7 @@ class User
 
   def self.find(id:)
     return nil unless id
-    
+
     result = DatabaseConnection.query(
       "SELECT * FROM users WHERE id = $1", [id]
     )
@@ -56,8 +57,9 @@ class User
     )
     return unless result.any?
     return unless BCrypt::Password.new(result[0]['password']) == password
-    User.new(id: result[0]['id'], name: result[0]['name'], username: result[0]['username'], 
-    email: result[0]['email'])
+
+    User.new(id: result[0]['id'], name: result[0]['name'], username: result[0]['username'],
+             email: result[0]['email'])
   end
 
   attr_reader :id, :name, :username, :email
@@ -70,10 +72,8 @@ class User
   end
 
   def self.account_exists?(username, email)
-    
     result = DatabaseConnection.query(
-      "SELECT * FROM users WHERE username = $1 OR email = $2",[username, email]
+      "SELECT * FROM users WHERE username = $1 OR email = $2", [username, email]
     ).any?
   end
-
 end

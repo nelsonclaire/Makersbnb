@@ -5,7 +5,8 @@ feature 'select a trips-start date' do
     fill_in('trip_start', with: '2022-02-25')
     fill_in('trip_end', with: '2022-02-28')
     click_button('List spaces')
-    
-    expect(page).to have_content "Selected dates: 2022-02-25 - 2022-02-28"
+    visit('/selected-dates')
+
+    expect(page).to have_content "Book a space"
   end
 end

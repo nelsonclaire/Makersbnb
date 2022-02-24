@@ -7,5 +7,4 @@ feature 'Adding a new space' do
     click_button('List my space')
     expect(page).to have_content("Book a space")
   end
-end 
-
+end

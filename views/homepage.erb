@@ -8,17 +8,25 @@
   </head>
   <body>
 
-  <a class="hyperlinks" href="/login" %>Login</a>
-
     <div class="page-header">
-      <h1>Feel at home, anywhere</h1>
+      <h1>MakersBnB - Feel at home, anywhere</h1>
     </div>
+
+
+  <div class="nav">
+
+  <a class="nav_links" href="/about" %>About</a> 
+  |
+  <a class="nav_links" href="/login" %>Login</a>
+
+  </div>
 
     <div class="flash-notice">
       <%= flash[:notice] %>
     </div>
 
-    <div class="newUser">Sign up to MakersBnB</div>
+    <div class="welcomeMessage">Sign up to MakersBnB</div>
+    
     <div class="container">
       <div class="signup-form">
         <form action="/users/new" method="post">
