@@ -41,8 +41,8 @@ class Space
   end
 
   def self.dates(start_date:, end_date:)
-    result = DatabaseConnection.query "SELECT * FROM spaces WHERE start_date <= $1 and end_date >= $2",
-                                      [start_date, end_date]
+    result = DatabaseConnection.query("SELECT * FROM spaces WHERE start_date <= $1 and end_date >= $2",
+                                      [start_date, end_date])
     result.map do |space|
       Space.new(
         id: space['id'],
