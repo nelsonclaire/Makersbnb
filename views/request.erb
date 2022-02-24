@@ -42,11 +42,21 @@
             <% if status == "Unavailable" %>
                 <%= date %> is Unavailable 
             </div>
+            <div>
+             <% elsif status == "Pending" %>
+                <%= date %> is Pending 
+            </div>
+            <div>
+             <% elsif status == "Declined" %>
+                <%= date %> is Declined
+            </div>
+            <div>
             <% elsif status == "Available" %>
-            <%= date %>
+            <%= date %> 
             <form action="/booking/<%= date %>/request" method="post">
               <button>Request</button>
             </form>
+            </div>
             <% end %>
             <% end %>
           <% end %>

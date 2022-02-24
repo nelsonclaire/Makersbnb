@@ -13,7 +13,7 @@ class Booking
 
   def self.create(date:, space_id:, user_id:)
     result = DatabaseConnection.query("INSERT INTO bookings(date, space_id, user_id)
-                                      VALUES($1, $2, $3, $4)
+                                      VALUES($1, $2, $3)
                                       RETURNING id, date, space_id, user_id, confirmed",
                                       [date, space_id, user_id])
 
@@ -48,16 +48,32 @@ class Booking
   #   end
   # end
 
-  def self.checkdates(space_id:, date: dates[])
+  def self.checkdates(space_id:, date: dates[], user_id:)
     date.map do |date|
-    space_booked = DatabaseConnection.query("SELECT * FROM bookings WHERE space_id = $1 and date = $2",
-                                      [space_id, date])
+    space_booked = DatabaseConnection.query("SELECT * FROM bookings WHERE space_id = $1 and date = $2 and confirmed = $3",
+                                      [space_id, date, true])
+    space_booked_for_you = DatabaseConnection.query("SELECT * FROM bookings WHERE space_id = $1 and date = $2 and confirmed = $3 and user_id = $4" ,
+                                        [space_id, date, true, user_id])
+    space_pending = DatabaseConnection.query("SELECT * FROM bookings WHERE space_id = $1 and date = $2 and confirmed is null and user_id = $3" ,
+                                          [space_id, date, user_id])
+    space_declined = DatabaseConnection.query("SELECT * FROM bookings WHERE space_id = $1 and date = $2 and confirmed = $3 and user_id = $4" ,
+                                            [space_id, date, false, user_id])
 
-                                      if space_booked.count.zero? 
-                                        {date => "Available"}
-                                      else  {date => "Unavailable"}
+      if !space_booked.count.zero? 
+        if space_booked_for_you.count.zero?
+          {date => "Unavailable"}        
+        else
+          {date => "Approved"} 
+        end
+      elsif !space_pending.count.zero?
+        {date => "Pending"} 
+      elsif !space_declined.count.zero?
+        {date => "Declined"} 
+      else 
+        {date => "Available"} 
+      end 
+
     end
-  end
   end
 
   def self.find(id:)
