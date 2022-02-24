@@ -81,6 +81,22 @@ class Makersbnb < Sinatra::Base
     end
   end
 
+  get '/requests' do 
+    p session[:user_id] 
+    @list_my_bookings = Booking.find_my_bookings(user_id: session[:user_id])
+    p @list_my_bookings
+    @list_spaces = Space.find_spaces(user_id: session[:user_id])
+    p @list_spaces 
+    erb :check_request
+  end 
+
+  get '/spaces' do 
+    p session[:user_id] 
+    @list_spaces = Space.find_spaces(user_id: session[:user_id])
+    p @list_spaces 
+    erb :spaces
+  end 
+
   get '/dates' do
     @user_name = session[:user_name]
     @start_date = session[:trip_start]

@@ -36,21 +36,9 @@
     <div class="card">
       <div class="card-body">
         <div class="rooms">
-          <% @bookings.each do |booking| %>
-            <div>
-              <% booking.each do |date, status| %>
-            <% if status == "Unavailable" %>
-                <%= date %> is Unavailable 
-            </div>
-            <% elsif status == "Available" %>
-            <%= date %>
-            <form action="/dates" method="get">
-              <button>Request</button>
-            </form>
-            <% end %>
-            <% end %>
+          <% @list_spaces.each do |space| %> 
+                <%= space.name %>  
           <% end %>
-
         </div>
       </div>
     </div>

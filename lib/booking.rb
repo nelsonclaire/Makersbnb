@@ -12,10 +12,10 @@ class Booking
   end
 
   def self.create(date:, space_id:, user_id:)
-    result = DatabaseConnection.query("INSERT INTO bookings(date, space_id, user_id, confirmed)
+    result = DatabaseConnection.query("INSERT INTO bookings(date, space_id, user_id)
                                       VALUES($1, $2, $3, $4)
                                       RETURNING id, date, space_id, user_id, confirmed",
-                                      [date, space_id, user_id, false])
+                                      [date, space_id, user_id])
 
     Booking.new(id: result[0]['id'], date: result[0]['date'], space_id: result[0]['space_id'],
                 user_id: result[0]['user_id'], confirmed: result[0]['confirmed'])
@@ -74,4 +74,51 @@ class Booking
       confirmed: result[0]['confirmed']
     )
   end
+
+  def self.find_bookings(space_id:)
+    return nil unless space_id
+
+    result = DatabaseConnection.query(
+      "SELECT * FROM bookings WHERE space_id = $1", [space_id]
+    )
+    result.map do |booking|
+      Booking.new(
+        id: booking['id'],
+        date: booking['date'],
+        space_id: booking['space_id'],
+        user_id: booking['user_id'],
+        confirmed: booking['confirmed']
+        )
+      end
+  end
+
+  def self.find_my_bookings(user_id:)
+    return nil unless user_id
+
+    result = DatabaseConnection.query(
+      "SELECT * FROM bookings WHERE user_id = $1", [user_id]
+    )
+    result.map do |booking|
+      Booking.new(
+        id: booking['id'],
+        date: booking['date'],
+        space_id: booking['space_id'],
+        user_id: booking['user_id'],
+        confirmed: booking['confirmed']
+        )
+      end
+  end
+
+  def self.approve_booking(id:)
+
+    result = DatabaseConnection.query("UPDATE bookings SET confirmed = true WHERE id=$1;", [id])
+
+  end
+  
+  def self.decline_booking(id:)
+
+    result = DatabaseConnection.query("UPDATE bookings SET confirmed = false WHERE id=$1;", [id])
+  
+  end 
+
 end
