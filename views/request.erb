@@ -44,7 +44,7 @@
             </div>
             <% elsif status == "Available" %>
             <%= date %>
-            <form action="/dates" method="get">
+            <form action="/booking/<%= date %>/request" method="post">
               <button>Request</button>
             </form>
             <% end %>

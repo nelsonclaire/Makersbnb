@@ -50,8 +50,8 @@
 <label for="start">Available from (DD/MM/YY)</label>
   <form method="post" action="/selected-dates">
     <input type="date" id="start" name="trip_start"
-       value="2022-02-22"
-       min="2018-01-01" max="2031-12-28">
+      value="<%=Date.today.to_s%>"
+    min="2018-01-01" max="2031-12-28">
     <br>
 <label for="end">Available to (DD/MM/YY)</label>
     <br>

@@ -105,10 +105,18 @@ class Makersbnb < Sinatra::Base
 
   get '/space/:id/:name/request' do
     p "into here"
+    session[:space_id] = params[:id]
+    session[:space_name] = params[:name]
     @space_name = params[:name]
     @date_range = session[:trip_start]..session[:trip_end]
-      @bookings = Booking.checkdates(space_id: params[:id], date: @date_range)
+    p @date_range
+    @bookings = Booking.checkdates(space_id: params[:id], date: @date_range)
     erb :request
+  end
+
+  post '/booking/:date/request' do
+    Booking.create(date: params[:date], space_id: session[:space_id], user_id: session[:user_id])
+    redirect "/space/#{session[:space_id]}/:name/request"
   end
 
   get '/sessions/destroy' do
