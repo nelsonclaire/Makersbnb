@@ -18,4 +18,3 @@ group :development, :test do
   gem 'webrick'
   gem 'bcrypt'
 end
-
