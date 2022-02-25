@@ -58,7 +58,7 @@
             <%= Date.parse(date.to_s).strftime("%-d %B %Y") %> 
             <form action="/booking/request" method="post">
             <input type="date" name="date" value="<%= date %>" hidden>
-              <button>Request to book</button>
+              <button class="request">Request to book</button>
             </form>
             </div>
             <% end %>
