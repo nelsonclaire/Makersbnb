@@ -24,7 +24,7 @@
 
     <%if @user_name%> 
     <div class="welcome">
-      You are logged in <%=@user_name%>! 
+      You are logged in, <%=@user_name%>! 
     </div>   
     <%end%>
 
@@ -38,7 +38,7 @@
 
   <div class="welcomeMessage">
   <form method="get" action="/spaces/new">
-  <button>List a space</button>
+  <button class="request">List a space</button>
   </form>
   </div>
         
@@ -57,7 +57,7 @@
        value="<%=Date.today.to_s%>"
        min="2018-01-01" max="2031-12-31">
     <br>
-    <button>List spaces</button>
+    <button >List spaces</button>
   </form>
   <br>
 

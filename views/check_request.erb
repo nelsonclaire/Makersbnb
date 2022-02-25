@@ -71,7 +71,7 @@
             <input type="text" name="booking_userid" value="<%= booking.user_id %>" hidden>
             <input type="text" name="booking_date" value="<%= booking.date %>" hidden>
             <input type="text" name="space_id" value="<%= booking.space_id %>" hidden>
-              <button>Update booking request</button>
+              <button class="request">Update booking request</button>
             </form>
             <br>
     <% end %>
@@ -123,6 +123,7 @@
             <div>
               <%= Date.parse(booking.date).strftime("%-d %B %Y") %>
             </div>
+            <label>--------------</label> 
     <% end %>
     </div>
   </span>

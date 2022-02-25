@@ -20,6 +20,6 @@ def list_test_space
     price: 90,
     start_date: (Date.today).to_s,
     end_date: (Date.today +1).to_s,
-    user_id: @user.id
+    # user_id: @user.id
   )
 end

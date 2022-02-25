@@ -79,7 +79,13 @@ a {
   height:350px;
   overflow:auto;  
   margin-top:10px;
+  /* margin-left: -200px; */
+  /* width: 320% */
 }
+
+/* .request-box {
+  border: #ff0000;
+} */
 
 .page-header {
   background-color: rgba(84, 116, 154, 0.5);
@@ -116,6 +122,19 @@ button {
   width: 100%;
 }
 
+.request {
+  /* background-color: rgb(194, 54, 54); */
+  /* border-radius: 0.5rem; */
+  /* border-style: none; */
+  /* color: white; */
+  /* font-size: 16px; */
+  /* margin-top: 10rem; */
+  padding: 0.5rem;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  width: 35%;
+}
+
 .flash-notice {
   background-color: rgb(244, 43, 21);
   color: white;
@@ -126,19 +145,22 @@ button {
 .card {
   text-align: justify;
   text-justify: inter-word;
+  /* width: 70%; */
+  margin-right: 25%;
+  margin-left: 25%;
   font-size: 90%;
    height: 70%;
 
 }
 
 .rooms{
-  border: 1px solid #e1e8ed;
+  /* border: 1px solid #ede1e1; */
   text-align: center;
     color: skyblue;
     cursor: pointer;
     position: relative;
     min-height: 51px;
-    padding: 1em;
+    padding: -5%;
     font-size: 1.2em;
     background-color: #ffffff;
     margin-bottom: 1em;
