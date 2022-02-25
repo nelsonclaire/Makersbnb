@@ -15,6 +15,6 @@ feature 'a signed-up user can log in' do
     fill_in('password', with: 'password123')
     click_button('Log in')
     expect(current_path).to eq '/dates'
-    expect(page).to have_content "You are logged in #{user.name}!"
+    expect(page).to have_content "You are logged in, #{user.name}!"
   end
 end

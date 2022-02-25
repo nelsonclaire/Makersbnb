@@ -15,7 +15,7 @@ class Makersbnb < Sinatra::Base
 
   enable :sessions
 
-  # , :method_override
+  # :method_override
 
   register Sinatra::Flash
 
@@ -86,10 +86,6 @@ class Makersbnb < Sinatra::Base
     @list_spaces = Space.all
     @list_my_spaces = Space.find_spaces(user_id: session[:user_id])
     @my_spaces = []
-    # @list_my_spaces.each do |space|
-    # @my_spaces << space.id
-    # end
-    # @list_space_bookings = Booking.find_unconfirmed_bookings(space_id: @my_spaces)
     @list_space_bookings = Booking.find_unconfirmed_bookings
     erb :check_request
   end 
@@ -107,22 +103,22 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/selected-dates' do
-    @start_date = params[:trip_start]
-    session[:trip_start] = @start_date
-    @end_date = params[:trip_end]
-    session[:trip_end] = @end_date
+    session[:trip_start] = params[:trip_start]
+    session[:trip_end] = params[:trip_end]
+
     @user = User.find(id: session[:user_id])
     @list_hosts = User.all
     @spaces = Space.dates(start_date: params[:trip_start], end_date: params[:trip_end])
     erb :choose_dates
-    # Space.dates(place: params[:id], start: params[:trip-start], end: params[:trip-end])
   end
 
   post '/space/request' do
     session[:space_id] = params[:space_id]
     session[:space_name] = params[:space_name]
     @space_name = params[:space_name]
-    @date_range = session[:trip_start]..session[:trip_end]
+
+    @date_range = Date.parse(session[:trip_start])..Date.parse(session[:trip_end])
+
     @bookings = Booking.checkdates(space_id: params[:space_id], date: @date_range, user_id: session[:user_id]) 
     erb :request
   end
@@ -155,7 +151,7 @@ class Makersbnb < Sinatra::Base
 end
 
   get '/space/request' do
-    @date_range = session[:trip_start]..session[:trip_end]
+    @date_range = Date.parse(session[:trip_start])..Date.parse(session[:trip_end])
     @space_name = session[:space_name]
     @bookings = Booking.checkdates(space_id: session[:space_id], date: @date_range, user_id: session[:user_id]) 
     erb :request

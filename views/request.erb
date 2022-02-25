@@ -40,22 +40,22 @@
             <div>
               <% booking.each do |date, status| %>
             <% if status == "Unavailable" %>
-                <%= Date.parse(date).strftime("%-d %B %Y") %> is Unavailable 
+                <%= Date.parse(date.to_s).strftime("%-d %B %Y") %> is Unavailable 
             </div>
             <label>---------------</label>
             <div>
              <% elsif status == "Pending" %>
-                <%= Date.parse(date).strftime("%-d %B %Y") %> is Pending 
+                <%= Date.parse(date.to_s).strftime("%-d %B %Y") %> is Pending 
             </div>
             <label>---------------</label>
             <div>
              <% elsif status == "Declined" %>
-                <%= Date.parse(date).strftime("%-d %B %Y") %> is Declined
+                <%= Date.parse(date.to_s).strftime("%-d %B %Y") %> is Declined
             </div>
             <label>---------------</label>
             <div>
             <% elsif status == "Available" %>
-            <%= Date.parse(date).strftime("%-d %B %Y") %> 
+            <%= Date.parse(date.to_s).strftime("%-d %B %Y") %> 
             <form action="/booking/request" method="post">
             <input type="date" name="date" value="<%= date %>" hidden>
               <button>Request to book</button>
