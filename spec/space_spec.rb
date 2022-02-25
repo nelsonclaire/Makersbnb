@@ -5,7 +5,7 @@ describe Space do
     it 'should add a space to the database' do
       user = create_test_user
       space = Space.list(
-        name: "Jack's House",
+        name: "My House",
         description: "Amazing place, sea views",
         price: 100,
         start_date: '2022-01-01',
@@ -15,7 +15,7 @@ describe Space do
 
       expect(space).to be_a Space
       expect(space.description).to eq("Amazing place, sea views")
-      expect(space.name).to eq("Jack's House")
+      expect(space.name).to eq("My House")
       expect(space.price).to eq("100")
     end
   end

@@ -1,0 +1,219 @@
+body {
+  background-image: url("images/makersbnb.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  height: 100%;
+  font-size: 18px;
+}
+
+.nav {
+  padding-top: 15px;
+  position: absolute;
+  right: 0;
+}
+
+.nav_links {
+  display: inline-block;
+  color: black;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-right: 10px;
+}
+
+login-message {
+  position: absolute;
+  right: 0;
+  display: inline-block;
+  color: black;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-right: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.welcomeMessage {
+  color: white;
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
+  max-width: 600px;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.container {
+  background-color: rgba(159, 148, 148, 0.75);
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+  max-width: 400px;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.container-column {
+  background-color: rgb(159, 148, 148, 0.75);
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  max-width: 600px;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+#space-scroll {
+  height:350px;
+  overflow:auto;  
+  margin-top:10px;
+}
+
+.page-header {
+  background-color: rgba(84, 116, 154, 0.5);
+  color: white;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin: auto;
+  text-align: center;
+}
+
+.sub-header {
+  background-color: rgba(77, 164, 89, 0.5);
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: auto;
+  text-align: center;
+}
+
+h1 {
+  display: inline;
+}
+
+button {
+  background-color: rgb(54, 75, 194);
+  border-radius: 0.5rem;
+  border-style: none;
+  color: white;
+  font-size: 16px;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  width: 100%;
+}
+
+.flash-notice {
+  background-color: rgb(244, 43, 21);
+  color: white;
+  font-size: 14;
+  text-align: center;
+}
+
+.card {
+  text-align: justify;
+  text-justify: inter-word;
+  font-size: 90%;
+   height: 70%;
+
+}
+
+.rooms{
+  border: 1px solid #e1e8ed;
+  text-align: center;
+    color: skyblue;
+    cursor: pointer;
+    position: relative;
+    min-height: 51px;
+    padding: 1em;
+    font-size: 1.2em;
+    background-color: #ffffff;
+    margin-bottom: 1em;
+}
+
+input {
+  border-style: none;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.form-details {
+  width: 100%;
+}
+
+::placeholder {
+  font-size: 14px;
+  padding: 5px;
+}
+
+.signup-form {
+  padding: 2rem;
+}
+
+.login-form {
+  padding: 2rem;
+}
+
+.dates-form {
+  padding: 2rem;
+}
+
+.new-space-form {
+  padding: 2rem;
+  width: 100%
+}
+
+.request-space {
+  padding: 2rem;
+  width: 100%
+}
+
+label {
+  color: black;
+  margin-bottom: -1rem;
+  margin-top: 0.5rem;
+}
+
+.date-picker {
+  color: rgb(177, 172, 172);
+  font-size: 14px;
+  padding: 5px;
+  width: 100%;
+}
+
+.space-index {
+  background-color: rgba(164, 149, 149, 0.75);
+  color: white;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  max-width: 600px;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.welcome {
+  color: rgb(39, 60, 91);
+  padding-top: 2rem;
+  text-align: center;
+  margin-bottom: 1em;
+  font-size: 3em;
+  text-shadow: 0 2px 2px #fff;
+  font-family: Arvo;
+}
+

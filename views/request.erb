@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
   </head>
+
   <body>
 
     <div class="page-header">
@@ -14,7 +15,7 @@
 
     <div class="nav">
 
-    <a class="nav_links" href="/spaces" %>Spaces</a> 
+    <a class="nav_links" href="/dates" %>Spaces</a> 
     |
   <a class="nav_links" href="/requests" %>Requests</a> 
   |
@@ -32,7 +33,6 @@
       <%= flash[:notice] %>
     </div>   
 
-
     <div class="card">
       <div class="card-body">
         <div class="rooms">
@@ -40,21 +40,22 @@
             <div>
               <% booking.each do |date, status| %>
             <% if status == "Unavailable" %>
-                <%= date %> is Unavailable 
+                <%= Date.parse(date).strftime("%-d %B %Y") %> is Unavailable 
             </div>
             <div>
              <% elsif status == "Pending" %>
-                <%= date %> is Pending 
+                <%= Date.parse(date).strftime("%-d %B %Y") %> is Pending 
             </div>
             <div>
              <% elsif status == "Declined" %>
-                <%= date %> is Declined
+                <%= Date.parse(date).strftime("%-d %B %Y") %> is Declined
             </div>
             <div>
             <% elsif status == "Available" %>
-            <%= date %> 
-            <form action="/booking/<%= date %>/request" method="post">
-              <button>Request</button>
+            <%= Date.parse(date).strftime("%-d %B %Y") %> 
+            <form action="/booking/request" method="post">
+            <input type="date" name="date" value="<%= date %>" hidden>
+              <button>Request to book</button>
             </form>
             </div>
             <% end %>
@@ -64,6 +65,12 @@
         </div>
       </div>
     </div>
+
+    <div class="welcomeMessage">
+  <form method="get" action="/dates">
+  <button>Return to dates</button>
+  </form>
+  </div>
 
   </body>
 </html>

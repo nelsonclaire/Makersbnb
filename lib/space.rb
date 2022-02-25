@@ -16,10 +16,12 @@ class Space
   def self.list(name:, description:, price:, start_date:, end_date:, user_id:)
     return nil if name.empty? || description.empty?
 
+    cleaned_name = DatabaseConnection.escape_string(name)
+
     result = DatabaseConnection.query("INSERT INTO spaces(name, description, price, start_date, end_date, user_id)
                                       VALUES($1, $2, $3, $4, $5, $6)
                                       RETURNING id, name, description, price, start_date, end_date, user_id",
-                                      [name, description, price, start_date, end_date, user_id])
+                                      [cleaned_name, description, price, start_date, end_date, user_id])
 
     Space.new(id: result[0]['id'], name: result[0]['name'], description: result[0]['description'], price: result[0]['price'],
               start_date: result[0]['start_date'], end_date: result[0]['end_date'], user_id: result[0]['user_id'])

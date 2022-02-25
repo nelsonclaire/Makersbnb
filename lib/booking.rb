@@ -95,7 +95,7 @@ class Booking
     return nil unless space_id
 
     result = DatabaseConnection.query(
-      "SELECT * FROM bookings WHERE space_id = $1", [space_id]
+      "SELECT * FROM bookings WHERE space_id = $1 and confirmed is null", [space_id]
     )
     result.map do |booking|
       Booking.new(
@@ -107,12 +107,46 @@ class Booking
         )
       end
   end
+
+#   def self.find_unconfirmed_bookings(space_id: ids[])
+#     space_id.map do |space_id|
+
+#     result = DatabaseConnection.query(
+#       "SELECT * FROM bookings where space_id = $1 and confirmed is null order by date asc", [space_id]
+#     )
+#     result.map do |booking|
+#       Booking.new(
+#         id: booking['id'],
+#         date: booking['date'],
+#         space_id: booking['space_id'],
+#         user_id: booking['user_id'],
+#         confirmed: booking['confirmed']
+#         )
+#       end
+#     end
+# end
+
+def self.find_unconfirmed_bookings
+
+  result = DatabaseConnection.query(
+    "SELECT * FROM bookings where confirmed is null order by date asc"
+  )
+  result.map do |booking|
+    Booking.new(
+      id: booking['id'],
+      date: booking['date'],
+      space_id: booking['space_id'],
+      user_id: booking['user_id'],
+      confirmed: booking['confirmed']
+      )
+    end
+end
 
   def self.find_my_bookings(user_id:)
     return nil unless user_id
 
     result = DatabaseConnection.query(
-      "SELECT * FROM bookings WHERE user_id = $1", [user_id]
+      "SELECT * FROM bookings WHERE user_id = $1 order by date asc", [user_id]
     )
     result.map do |booking|
       Booking.new(
@@ -125,9 +159,10 @@ class Booking
       end
   end
 
-  def self.approve_booking(id:)
+  def self.approve_booking(id:, date:, space_id:)
 
     result = DatabaseConnection.query("UPDATE bookings SET confirmed = true WHERE id=$1;", [id])
+    result = DatabaseConnection.query("UPDATE bookings SET confirmed = false WHERE space_id=$1 and date=$2 and confirmed is null;", [space_id, date])
 
   end
   

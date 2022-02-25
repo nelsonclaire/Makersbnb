@@ -123,6 +123,7 @@ To set up the appropriate tables, connect to each database in `psql` and run the
   * 01_create_spaces_table.sql
   * 02_create_users_table.sql
   * 03_add_user_id_start_date_end_date_to_spaces_table.sql
+  * 04_create_booking_table.sql
 
 - Run the following to check the tables have been created correctly
 
@@ -147,7 +148,7 @@ Foreign-key constraints:
 
 \d users
 
-                                     Table "public.users"
+Table "public.users"
   Column  |          Type          | Collation | Nullable |              Default              
 ----------+------------------------+-----------+----------+-----------------------------------
  id       | integer                |           | not null | nextval('users_id_seq'::regclass)
@@ -159,6 +160,23 @@ Indexes:
     "users_pkey" PRIMARY KEY, btree (id)
     "users_email_key" UNIQUE CONSTRAINT, btree (email)
     "users_username_key" UNIQUE CONSTRAINT, btree (username)
+
+\d bookings
+
+Table "public.bookings"
+  Column   |  Type   | Collation | Nullable |               Default                
+-----------+---------+-----------+----------+--------------------------------------
+ id        | integer |           | not null | nextval('bookings_id_seq'::regclass)
+ date      | date    |           |          | 
+ space_id  | integer |           |          | 
+ user_id   | integer |           |          | 
+ confirmed | boolean |           |          | 
+Indexes:
+    "bookings_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "bookings_space_id_fkey" FOREIGN KEY (space_id) REFERENCES spaces(id)
+    "bookings_user_id_fkey" FOREIGN KEY (user_id) REFERENCES users(id)
+
 ```
 
 

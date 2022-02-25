@@ -14,7 +14,7 @@
 
     <div class="nav">
 
-    <a class="nav_links" href="/spaces" %>Spaces</a> 
+    <a class="nav_links" href="/dates" %>Spaces</a> 
     |
   <a class="nav_links" href="/requests" %>Requests</a> 
   |
@@ -45,8 +45,6 @@
   <div class="container">
   <div class="dates-form">
 
-  <form method="get" action="/selected-dates">
-
 <label for="start">Available from (DD/MM/YY)</label>
   <form method="post" action="/selected-dates">
     <input type="date" id="start" name="trip_start"
@@ -65,7 +63,5 @@
 
   </div>
   </div>
-  Selected dates: <%= @start_date %> - <%= @end_date %>
-
   </body>
 </html>

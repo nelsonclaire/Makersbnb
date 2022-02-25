@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>MakersBnB</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/stylesheet.css">
+  </head>
+
+  <body>
+
+ <div class="page-header">
+      <h1>MakersBnB - Feel at home, anywhere</h1>
+    </div>
+
+    <div class="nav">
+
+    <a class="nav_links" href="/dates" %>Spaces</a> 
+    |
+  <a class="nav_links" href="/requests" %>Requests</a> 
+  |
+  <a class="nav_links" href="/sessions/destroy" %>Sign Out</a>
+
+  </div>
+
+    <div class="flash-notice">
+    <%= flash[:notice] %>
+  </div>
+
+  <div class="sub-header">
+  <h2>Request for <%=@space_name%> </h2>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <div class="rooms">
+<div>
+                    <label>From</label>
+                  </div>
+                  <div>
+                    <%= @user.name %>
+                  </div>
+                  <div>
+                  <label>Email</label>
+                  </div>
+                  <div>
+                    <%= @user.email %>
+                  </div>
+
+                  <div>
+                    <label>For</label>
+                  </div>
+                  <div>
+                    <%= @booking_date %>
+                  </div>
+
+                  <form action="/approve/request" method="post">
+                  <input type="text" name="booking_id" value="<%= @booking_id %>" hidden>
+                  <input type="text" name="space_id" value="<%= @space_id %>" hidden>
+                <button>Approve booking request</button>
+              </form>
+              <br>
+              <form action="/decline/request" method="post">
+              <input type="text" name="booking_id" value="<%= @booking_id %>" hidden>
+             <button>Decline booking request</button>
+              </form>
+              </div>
+              </div>
+              </div>
+
+
+  </body>
+</html>
+
+
+

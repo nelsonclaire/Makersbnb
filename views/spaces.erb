@@ -14,7 +14,7 @@
 
     <div class="nav">
 
-    <a class="nav_links" href="/spaces" %>Spaces</a> 
+    <a class="nav_links" href="/dates" %>Spaces</a> 
     |
   <a class="nav_links" href="/requests" %>Requests</a> 
   |
@@ -22,22 +22,20 @@
 
   </div>
 
-    <%if @space_name%> 
-    <div class="welcome">
-      <%=@space_name%>
-    </div>   
-    <%end%>
+  <div class="flash-notice">
+  <%= flash[:notice] %>
+</div>
 
-    <div class="flash-notice">
-      <%= flash[:notice] %>
-    </div>   
-
+<div class="sub-header">
+<h2>Your Spaces</h2>
+</div>
 
     <div class="card">
       <div class="card-body">
         <div class="rooms">
           <% @list_spaces.each do |space| %> 
                 <%= space.name %>  
+                <br>
           <% end %>
         </div>
       </div>

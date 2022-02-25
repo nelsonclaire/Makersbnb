@@ -4,17 +4,18 @@
     <meta charset="utf-8">
     <title>MakersBnB</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheet.css">
   </head>
+
   <body>
 
-    <div class="page-header">
+ <div class="page-header">
       <h1>MakersBnB - Feel at home, anywhere</h1>
     </div>
 
     <div class="nav">
 
-    <a class="nav_links" href="/spaces" %>Spaces</a> 
+    <a class="nav_links" href="/dates" %>Spaces</a> 
     |
   <a class="nav_links" href="/requests" %>Requests</a> 
   |
@@ -22,26 +23,115 @@
 
   </div>
 
-    <%if @space_name%> 
-    <div class="welcome">
-      <%=@space_name%>
-    </div>   
-    <%end%>
-
     <div class="flash-notice">
-      <%= flash[:notice] %>
-    </div>   
+    <%= flash[:notice] %>
+  </div>
+
+  <div class="sub-header">
+  <h2>Requests</h2>
+</div>
 
 
-    <div class="card">
-      <div class="card-body">
-        <div class="rooms">
-          <% @list_spaces.each do |space| %> 
-                <%= space.name %>  
-          <% end %>
-        </div>
-      </div>
+<div class="card">
+<div class="card-body">
+  <div class="rooms">
+  <h3>Requests I have received</h3>
+    <% @list_my_spaces.each do |space| %> 
+          <h3><%= space.name %> </h3>
+        <br>
+        <div>
+        <% @list_space_bookings.each do |booking| %>
+            <div>
+          <% if space.id == booking.space_id %>
+              <div>
+              <label>Status</label>
+            </div>
+            <% if booking.confirmed == "true"%>
+            <div>
+              <%= "Confirmed" %>
+            </div>
+            <% elsif booking.confirmed == "false"%>
+            <div>
+              <%= "Declined" %>
+            </div>
+            <% else %>
+            <div>
+              <%= "Pending" %>
+            </div>
+            <% end %>
+            <div>
+              <label>Date of stay</label>
+            </div>
+            <div>
+              <%= Date.parse(booking.date).strftime("%-d %B %Y") %>
+            </div>
+            <form action="/update/request" method="post">
+            <input type="text" name="booking_id" value="<%= booking.id %>" hidden>
+            <input type="text" name="space_name" value="<%= space.name %>" hidden>
+            <input type="text" name="booking_userid" value="<%= booking.user_id %>" hidden>
+            <input type="text" name="booking_date" value="<%= booking.date %>" hidden>
+            <input type="text" name="space_id" value="<%= booking.space_id %>" hidden>
+              <button>Update booking request</button>
+            </form>
+            <br>
+    <% end %>
+    <% end %>
+    <% end %>
+    <br>
+    <br>
+  </div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-body">
+  <span class="rooms">
+  <h3>Requests I have made</h3>
+  <div id="space-scroll">
+    <% @list_my_bookings.each do |booking| %>
+      <div>
+              <% @list_spaces.each do |space| %>
+                <% if space.id == booking.space_id %>
+                  <div>
+                    <label>Name of Space</label>
+                  </div>
+                  <div>
+                    <%= space.name %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+            <div>
+              <label>Status</label>
+            </div>
+            <% if booking.confirmed == "t"%>
+            <div>
+              <%= "Confirmed" %>
+            </div>
+            <% elsif booking.confirmed == "f"%>
+            <div>
+              <%= "Declined" %>
+            </div>
+            <% else %>
+            <div>
+              <%= "Pending" %>
+            </div>
+            <% end %>
+            <div>
+              <label>Date of stay</label>
+            </div>
+            <div>
+              <%= Date.parse(booking.date).strftime("%-d %B %Y") %>
+            </div>
+    <% end %>
     </div>
-
+  </span>
+</div>
+</div>
+  
+   
   </body>
 </html>
+
+
+
