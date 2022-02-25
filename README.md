@@ -2,6 +2,22 @@
 
 This is a web application that allows users to list spaces they have available, and to hire spaces for the night.
 
+### Set up 
+
+- Clone this repository to your local machine
+- Run `bundle install` in the command line to install the relevant gems
+- Connect to `psql` and create the `makerbnb` and `makersbnb_test` databases:
+
+```
+CREATE DATABASE makersbnb;
+CREATE DATABASE makersbnb_test;
+```
+
+- To set up the appropriate tables, connect to each database in `psql` and run the SQL scripts in the `db/migrations` folder in the given order.
+
+- Run `rackup` in the terminal
+- Visit `http://localhost:9292/` in your browser
+
 ### Headline specifications
 
 - Any signed-up user can list a new space.

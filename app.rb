@@ -21,6 +21,7 @@ class Makersbnb < Sinatra::Base
 
   get '/' do
     'Welcome to Makersbnb'
+    redirect '/homepage'
   end
 
   get '/spaces/new' do
