@@ -48,15 +48,15 @@
             </div>
             <% if booking.confirmed == "true"%>
             <div>
-              <%= "Confirmed" %>
+              <p style="color:green; font-style: italic"><%= "Confirmed" %></p>
             </div>
             <% elsif booking.confirmed == "false"%>
             <div>
-              <%= "Declined" %>
+              <p style="color:red; font-style: italic"><%= "Declined" %></p>
             </div>
             <% else %>
             <div>
-              <%= "Pending" %>
+              <p style="color:orange; font-style: italic"><%= "Pending" %></p>
             </div>
             <% end %>
             <div>
@@ -106,15 +106,15 @@
             </div>
             <% if booking.confirmed == "t"%>
             <div>
-              <%= "Confirmed" %>
+              <p style="color:green; font-style: italic"><%= "Confirmed" %></p>
             </div>
             <% elsif booking.confirmed == "f"%>
             <div>
-              <%= "Declined" %>
+              <p style="color:red; font-style: italic"><%= "Declined" %></p>
             </div>
             <% else %>
             <div>
-              <%= "Pending" %>
+              <p style="color:orange; font-style: italic"><%= "Pending" %></p>
             </div>
             <% end %>
             <div>
