@@ -292,7 +292,7 @@ User story 13
 #### Object Model
 
 
-      Object | Messages
+Object | Messages
 --------------- | ---------------
 Person |
 User | LogIn
